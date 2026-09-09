@@ -42,3 +42,6 @@ logs/
 # Temporary files
 temp/
 tmp/
+
+# Keep audio files local; do not upload them to GitHub
+*.mp3
