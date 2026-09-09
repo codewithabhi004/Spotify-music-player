@@ -1,34 +1,69 @@
-// Song Database
+// Song Database - Multiple Songs
 const songs = [
+    // 90's Collection
     {
-        name: "90's Hits - Part 1",
+        name: "90's Memory Lane - Track 1",
         file: "song/90's song.mp3",
         icon: "fa-compact-disc"
     },
     {
-        name: "Hawa Banke",
-        file: "song/hawa banke.mp3",
+        name: "90's Golden Hits",
+        file: "song/90's song.mp3",
         icon: "fa-music"
     },
     {
-        name: "90's Nostalgia",
+        name: "Retro Vibes 90s",
         file: "song/90's song.mp3",
         icon: "fa-vinyl"
     },
     {
-        name: "Melodic Dreams",
-        file: "song/hawa banke.mp3",
+        name: "Nostalgia - 90's Era",
+        file: "song/90's song.mp3",
         icon: "fa-heart"
     },
     {
-        name: "Classic Vibes",
+        name: "Classic 90's Hits",
         file: "song/90's song.mp3",
         icon: "fa-star"
     },
+    
+    // Hawa Banke Collection
     {
-        name: "Evening Chill",
+        name: "Hawa Banke - Original",
         file: "song/hawa banke.mp3",
         icon: "fa-moon"
+    },
+    {
+        name: "Hawa Banke - Remix",
+        file: "song/hawa banke.mp3",
+        icon: "fa-wind"
+    },
+    {
+        name: "Breeze of Romance",
+        file: "song/hawa banke.mp3",
+        icon: "fa-heart-pulse"
+    },
+    {
+        name: "Wind Dance",
+        file: "song/hawa banke.mp3",
+        icon: "fa-ring"
+    },
+    {
+        name: "Melodic Journey",
+        file: "song/hawa banke.mp3",
+        icon: "fa-music"
+    },
+    
+    // Additional Collection
+    {
+        name: "Evening Chill Mix",
+        file: "song/90's song.mp3",
+        icon: "fa-sunset"
+    },
+    {
+        name: "Night Vibes",
+        file: "song/hawa banke.mp3",
+        icon: "fa-moon-stars"
     }
 ];
 

@@ -392,6 +392,12 @@ body {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 30px;
+    min-height: 60vh;
+}
+
+#player {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;
+    background-attachment: fixed;
 }
 
 .player-header {
@@ -430,13 +436,39 @@ body {
 }
 
 .song-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(29, 185, 84, 0.1) 100%), url('pic/songbackground.jpeg');
+    background-size: cover, cover;
+    background-position: center, center;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.song-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.song-card * {
+    position: relative;
+    z-index: 2;
 }
 
 .song-card:hover {
@@ -533,6 +565,14 @@ body {
 }
 
 /* ============ ABOUT SECTION ============ */
+#about {
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), url('pic/backgroundhome.jpeg') !important;
+    background-size: auto, cover;
+    background-position: center, center;
+    background-attachment: fixed;
+    padding: 40px 0 40px 0;
+}
+
 .about-container {
     max-width: 800px;
     margin: 40px auto;
@@ -540,18 +580,24 @@ body {
 }
 
 .about-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
+    background: rgba(18, 18, 18, 0.92);
+    border: 2px solid var(--primary-color);
     border-radius: 15px;
     padding: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(29, 185, 84, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .about-header {
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 30px;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.about-header h2 {
+    color: var(--primary-color);
+    font-size: 36px;
 }
 
 .about-header h2 {
@@ -562,9 +608,11 @@ body {
 .developer-info {
     text-align: center;
     margin-bottom: 40px;
-    padding: 30px;
-    background: rgba(29, 185, 84, 0.05);
-    border-radius: 10px;
+    padding: 40px;
+    background: rgba(29, 185, 84, 0.1);
+    border-radius: 15px;
+    border: 2px solid rgba(29, 185, 84, 0.3);
+    box-shadow: 0 5px 20px rgba(29, 185, 84, 0.1);
 }
 
 .dev-avatar {
