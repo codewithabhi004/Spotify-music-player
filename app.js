@@ -18,6 +18,12 @@ let isPlaying = false;
 let userPhone = null;
 const audioPlayer = document.getElementById('audioPlayer');
 
+// Set volume to 100% initially
+if (audioPlayer) {
+    audioPlayer.volume = 1.0;
+    console.log('Audio player initialized with volume:', audioPlayer.volume);
+}
+
 // ============ LOGIN FUNCTIONALITY ============
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -110,11 +116,37 @@ function playSong(index) {
     currentSongIndex = index;
     const song = songs[index];
     
+    console.log('Playing song:', song.name, 'from:', song.file);
+    
+    // Reset audio player
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+    
+    // Set volume to maximum
+    audioPlayer.volume = 1.0;
+    
+    // Set the source
     audioPlayer.src = song.file;
-    audioPlayer.play();
-    isPlaying = true;
-    updatePlayButton();
-    updateCurrentSong();
+    
+    // Handle errors
+    audioPlayer.onerror = function() {
+        console.error('Error loading audio:', song.file);
+        alert('Error loading song: ' + song.name + '\n\nMake sure the file exists in the song/ folder');
+    };
+    
+    // Try to play
+    const playPromise = audioPlayer.play();
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            console.log('Successfully playing:', song.name);
+            isPlaying = true;
+            updatePlayButton();
+            updateCurrentSong();
+        }).catch(error => {
+            console.error('Playback error:', error);
+            alert('Could not play song. Error: ' + error.message);
+        });
+    }
 }
 
 function togglePlay() {
@@ -124,6 +156,8 @@ function togglePlay() {
         audioPlayer.pause();
         isPlaying = false;
     } else {
+        // Ensure volume is set when resuming
+        audioPlayer.volume = 1.0;
         audioPlayer.play();
         isPlaying = true;
     }
@@ -206,4 +240,10 @@ window.addEventListener('popstate', () => {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Spotify App Loaded');
+    console.log('Audio player found:', !!audioPlayer);
+    console.log('Audio player volume:', audioPlayer?.volume);
+    console.log('Songs available:', songs.length);
+    songs.forEach((song, i) => {
+        console.log(`  Song ${i + 1}: ${song.name} (${song.file})`);
+    });
 });
