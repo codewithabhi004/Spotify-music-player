@@ -85,8 +85,11 @@ function navigateTo(section) {
     // Show selected section
     document.getElementById(section).classList.add('active');
     
-    // Add active to clicked nav link
-    event.target.closest('.nav-link')?.classList.add('active');
+    // Add active to clicked nav link - find link that points to this section
+    const targetLink = document.querySelector(`a[href="#${section}"]`);
+    if (targetLink) {
+        targetLink.classList.add('active');
+    }
     
     // Scroll to top
     window.scrollTo(0, 0);
