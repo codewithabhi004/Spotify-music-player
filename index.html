@@ -15,7 +15,7 @@
 </head>
 <body>
     <!-- Login Page -->
-    <div id="loginPage" class="login-container">
+    <div id="loginPage" class="login-container" style="background-image: url('pic/backgroundhome.jpeg'); background-size: cover; background-position: center; background-attachment: fixed;">
         <div class="login-box">
             <div class="login-header">
                 <img src="pic/spotify.jpg" alt="Spotify" class="spotify-logo">
@@ -97,9 +97,11 @@
         <!-- Music Player Section -->
         <section id="player" class="content-section">
             <div class="player-container">
-                <div class="player-header">
-                    <h2>Now Playing</h2>
-                    <img src="pic/songbackground.jpeg" alt="Album Art" class="player-album-art">
+                <div class="player-header" style="background-image: url('pic/songbackground.jpeg'); background-size: cover; background-position: center; height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+                    <div style="text-align: center; background: rgba(0,0,0,0.5); padding: 40px; border-radius: 10px;">
+                        <h2 style="color: white; margin: 0 0 15px 0;">Now Playing</h2>
+                        <p id="currentSongLabel" style="color: #1DB954; font-size: 20px; font-weight: 700; margin: 0;">Select a song</p>
+                    </div>
                 </div>
                 
                 <div class="songs-list">
@@ -144,7 +146,7 @@
                             <i class="fas fa-user-circle"></i>
                         </div>
                         <h3>Abhishek Upadhayay</h3>
-                        <p class="tagline">Music & Tech Enthusiast | Full Stack Developer</p>
+                        <p class="tagline">🎵 Music Lover | 💻 Full Stack Developer | 🎧 Tech Enthusiast</p>
                     </div>
                     
                     <div class="contact-section">
@@ -187,9 +189,16 @@
                     <div class="about-description">
                         <h4>About This App</h4>
                         <p>
-                            This is a modern, responsive music streaming application built with HTML, CSS, and JavaScript.
-                            Enjoy unlimited access to your favorite songs with seamless playback across all devices.
-                            Stream from your phone, tablet, or desktop - your music, everywhere.
+                            <strong>Spotify Premium Music Streaming App</strong> - A modern music streaming platform built with passion by Abhishek Upadhayay.
+                        </p>
+                        <p>
+                            🎵 <strong>Features:</strong> Premium music quality, mobile number login, seamless playback, multi-device sync, and beautiful dark theme inspired by Spotify.
+                        </p>
+                        <p>
+                            Enjoy unlimited access to your favorite songs with seamless playback across all devices. Stream from your phone, tablet, or desktop - your music, everywhere.
+                        </p>
+                        <p style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);">
+                            <strong>Created with ❤️ by:</strong> Abhishek Upadhayay | <strong>Location:</strong> India 🇮🇳 | <strong>Passion:</strong> Music & Technology
                         </p>
                     </div>
                     

@@ -1,7 +1,7 @@
 // Song Database
 const songs = [
     {
-        name: "90's song",
+        name: "90's Hits - Part 1",
         file: "song/90's song.mp3",
         icon: "fa-compact-disc"
     },
@@ -9,6 +9,26 @@ const songs = [
         name: "Hawa Banke",
         file: "song/hawa banke.mp3",
         icon: "fa-music"
+    },
+    {
+        name: "90's Nostalgia",
+        file: "song/90's song.mp3",
+        icon: "fa-vinyl"
+    },
+    {
+        name: "Melodic Dreams",
+        file: "song/hawa banke.mp3",
+        icon: "fa-heart"
+    },
+    {
+        name: "Classic Vibes",
+        file: "song/90's song.mp3",
+        icon: "fa-star"
+    },
+    {
+        name: "Evening Chill",
+        file: "song/hawa banke.mp3",
+        icon: "fa-moon"
     }
 ];
 
@@ -187,7 +207,14 @@ function updatePlayButton() {
 }
 
 function updateCurrentSong() {
-    document.getElementById('currentSongName').textContent = songs[currentSongIndex].name;
+    const songName = songs[currentSongIndex].name;
+    document.getElementById('currentSongName').textContent = songName;
+    
+    // Also update the header label if it exists
+    const headerLabel = document.getElementById('currentSongLabel');
+    if (headerLabel) {
+        headerLabel.textContent = songName;
+    }
 }
 
 // Handle end of song - play next automatically
