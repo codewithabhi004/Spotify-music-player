@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1DB954">
+    <meta name="description" content="Modern music streaming application with Spotify-inspired design. Login with mobile number and enjoy your favorite songs.">
+    <meta name="author" content="Abhishek Upadhayay">
+    <title>Spotify - Premium Music Streaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/jpeg" href="pic/spotify.jpg">
+    <link rel="apple-touch-icon" href="pic/spotify.jpg">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="pic/spotify.jpg" alt="Spotify" class="spotify-logo">
+                <h1>Spotify</h1>
+                <p>Premium Music Streaming</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="countryCode">Country Code</label>
+                    <div class="country-code-input">
+                        <span>+</span>
+                        <input type="text" id="countryCode" value="91" maxlength="3">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Mobile Number</label>
+                    <input type="tel" id="phoneNumber" placeholder="Enter your 10-digit number" required maxlength="10">
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <span>Send OTP</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <div class="login-divider">or</div>
+                
+                <button type="button" class="btn-demo" onclick="loginAsGuest()">
+                    <i class="fas fa-play-circle"></i>
+                    Continue as Guest
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <p>🎵 Enjoy unlimited music from India's favorite artists</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Page -->
+    <div id="mainApp" class="app-container" style="display: none;">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <img src="pic/spotify.jpg" alt="Spotify" class="navbar-logo">
+                <span>Spotify</span>
+            </div>
+            <div class="navbar-menu">
+                <a href="#home" class="nav-link active" onclick="navigateTo('home')">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#player" class="nav-link" onclick="navigateTo('player')">
+                    <i class="fas fa-music"></i> Music
+                </a>
+                <a href="#about" class="nav-link" onclick="navigateTo('about')">
+                    <i class="fas fa-info-circle"></i> About
+                </a>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="home-hero">
+                <img src="pic/backgroundhome.jpeg" alt="Background" class="hero-image">
+                <div class="hero-overlay">
+                    <h1>Welcome to Spotify</h1>
+                    <p>Discover Premium Music</p>
+                    <button class="btn-start" onclick="navigateTo('player')">
+                        <i class="fas fa-play"></i> Start Playing
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Player Section -->
+        <section id="player" class="content-section">
+            <div class="player-container">
+                <div class="player-header">
+                    <h2>Now Playing</h2>
+                    <img src="pic/songbackground.jpeg" alt="Album Art" class="player-album-art">
+                </div>
+                
+                <div class="songs-list">
+                    <h3>Your Playlist</h3>
+                    <div id="songsList" class="songs-grid">
+                        <!-- Songs will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="player-controls">
+                    <div class="current-song">
+                        <p>Now Playing: <span id="currentSongName">Select a song</span></p>
+                    </div>
+                    <audio id="audioPlayer" style="width: 100%; margin: 20px 0;">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <div class="controls-buttons">
+                        <button onclick="previousSong()" class="btn-control">
+                            <i class="fas fa-step-backward"></i> Previous
+                        </button>
+                        <button id="playBtn" onclick="togglePlay()" class="btn-play">
+                            <i class="fas fa-play"></i> Play
+                        </button>
+                        <button onclick="nextSong()" class="btn-control">
+                            Next <i class="fas fa-step-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <div class="about-container">
+                <div class="about-card">
+                    <div class="about-header">
+                        <h2>About Developer</h2>
+                    </div>
+                    
+                    <div class="developer-info">
+                        <div class="dev-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>Abhishek Upadhayay</h3>
+                        <p class="tagline">Music & Tech Enthusiast | Full Stack Developer</p>
+                    </div>
+                    
+                    <div class="contact-section">
+                        <h4>Get in Touch</h4>
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <label>Phone</label>
+                                    <a href="tel:+919878229978">+91 9878229978</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fab fa-github"></i>
+                                <div>
+                                    <label>GitHub</label>
+                                    <a href="https://github.com/codewithabhi044" target="_blank">codewithabhi044</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fab fa-instagram"></i>
+                                <div>
+                                    <label>Instagram</label>
+                                    <a href="https://instagram.com/ig.abhishek21" target="_blank">@ig.abhishek21</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fab fa-snapchat"></i>
+                                <div>
+                                    <label>Snapchat</label>
+                                    <a href="https://snapchat.com/add/snp.abhishek21" target="_blank">snp.abhishek21</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-description">
+                        <h4>About This App</h4>
+                        <p>
+                            This is a modern, responsive music streaming application built with HTML, CSS, and JavaScript.
+                            Enjoy unlimited access to your favorite songs with seamless playback across all devices.
+                            Stream from your phone, tablet, or desktop - your music, everywhere.
+                        </p>
+                    </div>
+                    
+                    <div class="share-section">
+                        <h4>Share This App</h4>
+                        <div class="share-buttons">
+                            <button class="share-btn whatsapp" onclick="shareApp('whatsapp')">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="share-btn facebook" onclick="shareApp('facebook')">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </button>
+                            <button class="share-btn twitter" onclick="shareApp('twitter')">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </button>
+                            <button class="share-btn copy" onclick="copyShareLink()">
+                                <i class="fas fa-link"></i> Copy Link
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Register Service Worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => {
+                console.log('Service Worker registration failed:', err);
+            });
+        }
+    </script>
+</body>
+</html>

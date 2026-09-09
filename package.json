@@ -1,0 +1,25 @@
+{
+  "name": "spotify-music-app",
+  "version": "1.0.0",
+  "description": "A modern, responsive music streaming web application with login and music player",
+  "main": "index.html",
+  "author": "Abhishek Upadhayay",
+  "license": "MIT",
+  "keywords": [
+    "spotify",
+    "music",
+    "streaming",
+    "player",
+    "web-app",
+    "responsive",
+    "pwa"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codewithabhi044/spotify-music-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codewithabhi044/spotify-music-app/issues"
+  },
+  "homepage": "https://github.com/codewithabhi044/spotify-music-app#readme"
+}

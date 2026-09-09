@@ -1,0 +1,47 @@
+{
+  "name": "Spotify Music App",
+  "short_name": "Spotify",
+  "description": "Modern music streaming application with login and playback",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1DB954",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "pic/spotify.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "pic/spotify.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "pic/backgroundhome.jpeg",
+      "sizes": "540x720",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["music", "entertainment", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Open Music Player",
+      "short_name": "Player",
+      "description": "Open the music player directly",
+      "url": "/index.html?section=player",
+      "icons": [
+        {
+          "src": "pic/spotify.jpg",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
