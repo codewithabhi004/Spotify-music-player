@@ -1,111 +1,57 @@
-// Service Worker for Spotify Music App
-const CACHE_NAME = 'spotify-app-v1';
-const urlsToCache = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/app.js',
-    '/manifest.json',
-    '/pic/spotify.jpg',
-    '/pic/backgroundhome.jpeg',
-    '/pic/songbackground.jpeg',
-    '/song/90\'s song.mp3',
-    '/song/hawa banke.mp3',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+const CACHE_NAME = 'my-love-v3';
+const APP_SHELL = [
+    './',
+    './index.html',
+    './manifest.webmanifest',
+    './library.json',
+    './pic/loginpage.jpeg',
+    './pic/use.jpeg',
+    './pic/use1.jpeg',
+    './pic/use2.jpeg',
+    './pic/use3.jpeg',
+    './pic/use4.jpeg'
 ];
 
-// Install event - cache assets
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => {
-                // Cache main files
-                return cache.addAll([
-                    '/',
-                    '/index.html',
-                    '/style.css',
-                    '/app.js',
-                    '/manifest.json'
-                ]);
-            })
-            .catch(err => console.log('Cache installation failed:', err))
+            .then(cache => cache.addAll(APP_SHELL.map(path => new URL(path, self.registration.scope))))
     );
     self.skipWaiting();
 });
 
-// Activate event - clean up old caches
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
+        caches.keys().then(names => Promise.all(
+            names.filter(name => name.startsWith('my-love-') && name !== CACHE_NAME)
+                .map(name => caches.delete(name))
+        ))
     );
     self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', event => {
-    // Skip non-GET requests
-    if (event.request.method !== 'GET') {
-        return;
-    }
+    const { request } = event;
+    const url = new URL(request.url);
+    if (request.method !== 'GET' || url.origin !== self.location.origin || request.headers.has('range')) return;
 
-    // For audio files, try network first, then cache
-    if (event.request.url.includes('.mp3')) {
-        event.respondWith(
-            fetch(event.request)
-                .then(response => {
-                    // Cache the fetched response
-                    if (response && response.status === 200) {
-                        const responseToCache = response.clone();
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-                    }
-                    return response;
-                })
-                .catch(() => {
-                    // Fallback to cache if network fails
-                    return caches.match(event.request);
-                })
-        );
-        return;
-    }
+    event.respondWith((async () => {
+        const cache = await caches.open(CACHE_NAME);
+        const cached = await cache.match(request);
+        if (cached) return cached;
 
-    // For other resources, try cache first, then network
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request)
-                    .then(response => {
-                        // Don't cache non-successful responses
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone the response
-                        const responseToCache = response.clone();
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return response;
-                    })
-                    .catch(() => {
-                        // Return offline page or cached version
-                        return caches.match('/index.html');
-                    });
-            })
-    );
+        try {
+            const response = await fetch(request);
+            if (response.ok && response.type === 'basic') {
+                await cache.put(request, response.clone());
+            }
+            return response;
+        } catch (error) {
+            if (request.mode === 'navigate') {
+                const page = await cache.match(new URL('./index.html', self.registration.scope));
+                if (page) return page;
+            }
+            throw error;
+        }
+    })());
 });

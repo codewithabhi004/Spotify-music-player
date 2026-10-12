@@ -1,0 +1,12 @@
+[
+  { "id": "aashiq-banaya", "title": "Aashiq Banaya", "artist": "My Love", "sourceFile": "aashiq banaya .mpeg", "file": "aashiq banaya .mp3", "artwork": "use.jpeg" },
+  { "id": "chalre-chalre-wal", "title": "Chalre Chalre Wal", "artist": "My Love", "sourceFile": "chalre chalre wal.mpeg", "file": "chalre chalre wal.mp3", "artwork": "use1.jpeg" },
+  { "id": "chunari", "title": "Chunari", "artist": "My Love", "sourceFile": "chunari .mpeg", "file": "chunari .mp3", "artwork": "use2.jpeg" },
+  { "id": "fir-mila-de-ram", "title": "Fir Mila De Ram", "artist": "My Love", "sourceFile": "fir mila de ram.mpeg", "file": "fir mila de ram.mp3", "artwork": "use3.jpeg" },
+  { "id": "hawa-banke", "title": "Hawa Banke", "artist": "My Love", "sourceFile": "hawa banke.mp3", "file": "hawa banke.mp3", "artwork": "use4.jpeg" },
+  { "id": "jable-jagl", "title": "Jable Jagl Bani Table Lagal Rahi", "artist": "My Love", "sourceFile": "jable jagl bani table lagal rahi.mpeg", "file": "jable jagl bani table lagal rahi.mp3", "artwork": "use.jpeg" },
+  { "id": "kitab", "title": "Kitab", "artist": "My Love", "sourceFile": "kitab.mpeg", "file": "kitab.mp3", "artwork": "use1.jpeg" },
+  { "id": "parmish", "title": "Parmish", "artist": "My Love", "sourceFile": "parmish.mpeg", "file": "parmish.mp3", "artwork": "use2.jpeg" },
+  { "id": "rude", "title": "Rude", "artist": "My Love", "sourceFile": "rude.mpeg", "file": "rude.mp3", "artwork": "use3.jpeg" },
+  { "id": "udariya", "title": "Udariya", "artist": "My Love", "sourceFile": "udariya .mpeg", "file": "udariya .mp3", "artwork": "use4.jpeg" }
+]

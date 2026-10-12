@@ -16,6 +16,14 @@ Thumbs.db
 dist/
 build/
 *.build/
+.web-public/
+song/
+*.mp3
+*.mpeg
+.web-public/
+song/
+*.mp3
+*.mpeg
 
 # Environment files
 .env
@@ -42,6 +50,3 @@ logs/
 # Temporary files
 temp/
 tmp/
-
-# Keep audio files local; do not upload them to GitHub
-*.mp3
