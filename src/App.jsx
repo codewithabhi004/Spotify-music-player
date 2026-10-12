@@ -207,7 +207,7 @@ export default function App() {
         setLocalTracks(previous => [...previous, ...tracks]);
         setSearch('');
         setFilter('all');
-        setMessage(`${tracks.length} song${tracks.length === 1 ? '' : 's'} saved on this device. Add another 10 or more any time.`);
+        setMessage(`${tracks.length} song${tracks.length === 1 ? '' : 's'} saved on this device. Add more whenever you like.`);
         event.target.value = '';
     };
 
