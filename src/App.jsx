@@ -169,6 +169,8 @@ export default function App() {
 
     const handleFiles = async (event) => {
         const files = [...event.target.files];
+        if (!files.length) return;
+
         const audioFiles = files.filter(file =>
             file.type.startsWith('audio/') || /\.(mp3|mpeg|m4a|wav|ogg|aac|flac)$/i.test(file.name)
         );
@@ -482,14 +484,18 @@ export default function App() {
                         </div>
 
                         <div className="library-toolbar">
-                            <div><p className="section-eyebrow">YOUR COLLECTION</p><h2>{filter === 'favourites' ? 'Loved songs' : search ? 'Search results' : 'All songs'}</h2></div>
+                            <div className="library-toolbar-heading"><div><p className="section-eyebrow">YOUR COLLECTION</p><h2>{filter === 'favourites' ? 'Loved songs' : search ? 'Search results' : 'All songs'}</h2></div>
+                                <button className="library-add-button" type="button" onClick={() => fileInputRef.current?.click()}>
+                                    <Upload size={17} /><span>Add songs</span>
+                                </button>
+                            </div>
                             <div className="filter-pills">
                                 <button type="button" className={filter === 'all' ? 'selected' : ''} onClick={() => setFilter('all')}><ListMusic size={16} /> All songs</button>
                                 <button type="button" className={filter === 'favourites' ? 'selected' : ''} onClick={() => setFilter('favourites')}><Heart size={16} /> Favourites</button>
                             </div>
                         </div>
 
-                        <p className="upload-hint">Add 10 or more songs at once. Your music is saved privately on this device.</p>
+                        <p className="upload-hint">No songs come preloaded. Add songs from this device any time; you can add more later, and they stay private to this device.</p>
                         {message && <p className="library-message" role="status">{message}</p>}
                         {visibleSongs.length ? (
                             <div className="song-grid">
@@ -521,7 +527,7 @@ export default function App() {
                             <div className="empty-library">
                                 <Music2 size={32} />
                                 <h3>{filter === 'favourites' ? 'No favourites yet' : 'No songs found'}</h3>
-                                <p>{filter === 'favourites' ? 'Tap the heart on any song to keep it here.' : 'Choose audio files saved on this device. Your music stays on your device.'}</p>
+                                <p>{filter === 'favourites' ? 'Tap the heart on any song to keep it here.' : 'There are no preloaded songs. Add audio files from your device; you can add more whenever you like.'}</p>
                                 {filter === 'favourites' && <button type="button" onClick={() => setFilter('all')}>Browse all songs</button>}
                                 {filter === 'all' && !search && <button type="button" onClick={() => fileInputRef.current?.click()}>Add songs from this device</button>}
                             </div>
@@ -552,6 +558,7 @@ export default function App() {
                 <button type="button" className={view === 'library' && filter === 'all' ? 'is-selected' : ''} onClick={() => { showLibrary(); setFilter('all'); }}><Music2 size={19} /><span>Library</span></button>
                 <button type="button" className={filter === 'favourites' ? 'is-selected' : ''} onClick={() => { showLibrary(); setFilter('favourites'); }}><Heart size={19} /><span>Favourites</span></button>
                 <button type="button" className={view === 'player' ? 'is-selected' : ''} onClick={() => currentIndex >= 0 ? showPlayer(currentIndex) : startSong(0)}><AudioLines size={19} /><span>Player</span></button>
+                <button type="button" onClick={() => fileInputRef.current?.click()}><Upload size={19} /><span>Add songs</span></button>
             </nav>
         </div>
     );

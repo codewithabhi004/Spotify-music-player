@@ -76,7 +76,10 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 .memory-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 36%; }
 .memory-caption { position: absolute; right: 0; bottom: 8px; left: 0; display: flex; justify-content: center; gap: 5px; color: #74575c; font: 600 10px 'Manrope', sans-serif; }
 .library-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin: 54px 0 25px; }
+.library-toolbar-heading { display: flex; align-items: end; gap: 20px; }
 .library-toolbar h2, .up-next-heading h2 { margin: 8px 0 0; font: 750 27px 'Manrope', sans-serif; letter-spacing: -.8px; }
+.library-add-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; margin-bottom: 2px; padding: 0 14px; color: #261b1c; background: var(--accent); border: 0; border-radius: 11px; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.library-add-button:hover { background: var(--accent-bright); }
 .upload-hint { margin: -12px 0 22px; color: var(--muted); font-size: 11px; }
 .filter-pills { display: flex; gap: 7px; padding: 5px; border: 1px solid var(--line); border-radius: 13px; background: rgba(255,255,255,.035); }
 .filter-pills button { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 13px; color: var(--muted); background: transparent; border: 0; border-radius: 9px; cursor: pointer; font-size: 12px; font-weight: 600; }
@@ -194,6 +197,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
     .memory-caption svg { width: 10px; height: 10px; }
     .welcome-row::after { right: -40%; }
     .library-toolbar { align-items: start; flex-direction: column; gap: 15px; margin: 35px 0 17px; }
+    .library-toolbar-heading { width: 100%; align-items: center; justify-content: space-between; gap: 8px; }
     .library-toolbar h2 { font-size: 23px; }
     .filter-pills { width: 100%; }
     .filter-pills button { flex: 1; justify-content: center; font-size: 11px; }
@@ -236,7 +240,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
     .mini-controls { gap: 0; }
     .mini-controls .icon-button { width: 35px; height: 38px; }
     .mini-controls .icon-button:first-child { display: none; }
-    .mobile-nav { position: fixed; z-index: 7; right: 0; bottom: 0; left: 0; display: grid; height: 62px; grid-template-columns: repeat(3, 1fr); padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid var(--line); background: rgba(20,18,17,.97); backdrop-filter: blur(20px); }
+    .mobile-nav { position: fixed; z-index: 7; right: 0; bottom: 0; left: 0; display: grid; height: 62px; grid-template-columns: repeat(4, 1fr); padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid var(--line); background: rgba(20,18,17,.97); backdrop-filter: blur(20px); }
     .mobile-nav button { display: grid; justify-items: center; align-content: center; gap: 3px; color: #8e8782; background: transparent; border: 0; font-size: 9px; cursor: pointer; }
     .mobile-nav button.is-selected { color: var(--accent-bright); }
 }
