@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-love-v3';
+const CACHE_NAME = 'my-love-v4';
 const APP_SHELL = [
     './',
     './index.html',
@@ -37,6 +37,20 @@ self.addEventListener('fetch', event => {
 
     event.respondWith((async () => {
         const cache = await caches.open(CACHE_NAME);
+        if (request.mode === 'navigate') {
+            try {
+                const response = await fetch(request);
+                if (response.ok) {
+                    await cache.put(new URL('./index.html', self.registration.scope), response.clone());
+                }
+                return response;
+            } catch (error) {
+                const page = await cache.match(new URL('./index.html', self.registration.scope));
+                if (page) return page;
+                throw error;
+            }
+        }
+
         const cached = await cache.match(request);
         if (cached) return cached;
 
